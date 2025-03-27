@@ -10,11 +10,8 @@ rimuovi load/store:
 disasseblare bc:
     llvm-dis prova.m2r.bc -o file.m2r.ll
 
-convertire il file .ll in .bc:
-    llvm-as test/test.ll -o test/test.bc
-
 applicare il pass e generare i file ottimizzati:
-    opt -load-pass-plugin=build/AlgebraicIdentity.so -passes="diobestia" test/test.bc -o build/output.optimized.bc
+    opt -load-pass-plugin=build/AlgebraicIdentity.so -passes="nome-pass" test/test.ll -o test/output.optimized.bc
 
 Convertiamo poi il bitcode ottimizzato in .ll leggibile:
-    llvm-dis build/output.optimized.bc -o build/output.optimized.ll
+    llvm-dis test/output.optimized.bc -o test/output.optimized.ll
